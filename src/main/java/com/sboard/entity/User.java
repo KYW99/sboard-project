@@ -1,3 +1,4 @@
+
 package com.sboard.entity;
 
 import com.sboard.dto.UserDTO;

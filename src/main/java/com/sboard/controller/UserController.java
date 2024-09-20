@@ -1,4 +1,3 @@
-
 package com.sboard.controller;
 
 import com.sboard.config.AppInfo;
@@ -9,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,9 +28,8 @@ public class UserController {
 
     private final AppInfo appInfo;
 
-
     @GetMapping("/user/login")
-    public String login(Model model) {
+    public String login(Model model){
         model.addAttribute(appInfo);
         return "/user/login";
     }

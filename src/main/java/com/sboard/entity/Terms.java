@@ -1,29 +1,28 @@
 package com.sboard.entity;
 
+
 import com.sboard.dto.TermsDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.sboard.dto.UserDTO;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "terms")
 public class Terms {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
     private String terms;
     private String privacy;
 
-    public TermsDTO toDTO() {
+    public TermsDTO toDTO(){
         return TermsDTO.builder()
                 .seq(seq)
                 .terms(terms)
