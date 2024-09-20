@@ -10,4 +10,6 @@ public class AppConfig {
     public AppInfo getAppInfo() {
         return new AppInfo();
     }
+
+
 }
