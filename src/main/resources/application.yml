@@ -3,13 +3,14 @@ logging:
         name: /logs/sboard.log
     level:
         jdbc:
-            resultsettable: info
-            sqlonly: info
-            sqltiming: info
+            resultsettable: debug
+            sqlonly: debug
+            sqltiming: debug
         org:
             hibernate:
-                jdbc:
-                    bind: trace
+                orm:
+                    jdbc:
+                        bind: trace
                 sql: debug
         root: info
 server:
@@ -17,11 +18,10 @@ server:
     servlet:
         context-path: /sboard
 
-
 spring:
     application:
         name: sboard
-        version : 0.0.2
+        version : 0.0.3
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://3.35.233.12:3306/jboard

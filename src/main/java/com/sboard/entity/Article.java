@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +33,10 @@ public class Article {
     @CreationTimestamp
     private LocalDateTime rdate;
 
+    //추가필드
+    @Transient// 엔티티 속성에서 제외시키는 어노테이션, 테이블의 컬럼 생성 안함
+    private String nick;
+    /*
     public ArticleDTO toDTO() {
         return ArticleDTO.builder()
                 .no(no)
@@ -47,7 +52,7 @@ public class Article {
                 .build();
     }
 
-    /*
+
     DTO 변환 메서드 대신 ModelMapper 사용
     */
     

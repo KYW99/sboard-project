@@ -1,8 +1,9 @@
 package com.sboard.controller;
 
-import com.sboard.config.AppInfo;
 import com.sboard.dto.ArticleDTO;
 import com.sboard.dto.FileDTO;
+import com.sboard.dto.PageRequestDTO;
+import com.sboard.dto.PageResponseDTO;
 import com.sboard.service.ArticleService;
 import com.sboard.service.FileService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,22 +24,21 @@ public class ArticleController {
     private final ArticleService articleService;
     private final FileService fileService;
 
-    // 프리 핸들러
 
     @GetMapping("/article/list")
-    public String list() {
+    public String list(Model model, PageRequestDTO pageRequestDTO) {
+
+        PageResponseDTO pageResponseDTO = articleService.selectArticleAll(pageRequestDTO);
+        model.addAttribute(pageResponseDTO);
 
         return "/article/list";
     }
-    // 포스트 핸들러
 
     @GetMapping("/article/write")
     public String write(){
 
-
         return "/article/write";
     }
-
 
     @PostMapping("/article/write")
     public String write(ArticleDTO articleDTO, HttpServletRequest req){
@@ -61,6 +61,7 @@ public class ArticleController {
 
         return "redirect:/article/list";
     }
+
 
     @GetMapping("/article/view")
     public String view(){
