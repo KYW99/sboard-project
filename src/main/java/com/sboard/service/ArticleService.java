@@ -41,15 +41,21 @@ public class ArticleService {
         return null;
     }
 
+
     public PageResponseDTO selectArticleAll(PageRequestDTO pageRequestDTO) {
 
         Pageable pageable = pageRequestDTO.getPageable("no");
 
+        Page<Tuple> pageArticle = null;
+
 
         // 엔티티 조회
-        //List<Article> articles = articleRepository.findAll();
-        Page<Tuple> pageArticle = articleRepository.selectArticleAllForList(pageRequestDTO, pageable);
 
+        if(pageRequestDTO.getKeyword() == null) {
+            pageArticle = articleRepository.selectArticleAllForList(pageRequestDTO, pageable);
+        }else{
+            pageArticle = articleRepository.selectArticleForSearch(pageRequestDTO, pageable);
+        }
         // 엔티티 리스트를 DTO 리스트 변환
         List<ArticleDTO> articleList = pageArticle.getContent().stream().map(tuple -> {
 
