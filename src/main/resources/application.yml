@@ -21,6 +21,7 @@ server:
 spring:
     application:
         name: sboard
+        version: ${ext.version}
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://3.35.233.12:3306/jboard
@@ -58,5 +59,4 @@ spring:
           location: uploads/
           max-file-size: 10MB
 
-ext:
-    version: ${ext.version}
+
