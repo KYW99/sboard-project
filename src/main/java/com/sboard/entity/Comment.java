@@ -8,22 +8,26 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "file")
-public class FileEntity {
+@Table(name = "comment")
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int fno;
-
-    private int ano;
-    private String oName;
-    private String sName;
-    private int download;
+    private int no;
+    private int parent;
+    private String content;
+    //private String writer;
+    private String regip;
 
     @CreationTimestamp
     private LocalDateTime rdate;
+
+    @ManyToOne
+    @JoinColumn(name = "writer")
+    private User user;
 }

@@ -32,10 +32,6 @@ public class ArticleController {
         PageResponseDTO pageResponseDTO = articleService.selectArticleAll(pageRequestDTO);
         model.addAttribute(pageResponseDTO);
 
-
-        
-        
-
         return "/article/list";
     }
 
@@ -69,9 +65,26 @@ public class ArticleController {
 
 
     @GetMapping("/article/view")
-    public String view(){
+    public String view(int no, Model model){
+        ArticleDTO articleDTO = articleService.selectArticle(no);
+        log.info(articleDTO);
+
+
+        model.addAttribute(articleDTO);
+
         return "/article/view";
     }
+
+    @PostMapping("/article/comment")
+    public String comment(int no, String content){
+
+        log.info(content);
+
+        return "redircet:/article/view?no="+no;
+
+
+    }
+
 
     @GetMapping("/article/modify")
     public String modify(){
