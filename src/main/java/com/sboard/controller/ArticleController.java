@@ -80,7 +80,7 @@ public class ArticleController {
 
         log.info(content);
 
-        return "redircet:/article/view?no="+no;
+        return "redirect:/article/view?no="+no;
 
 
     }
